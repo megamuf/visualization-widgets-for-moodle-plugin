@@ -49,7 +49,6 @@ function addIsotopeGrid(msg) {
             $(truncateTitles);
             $(bindDescriptionHover);
             $(bindLinkHover);
-           
             if(attoEditor){
                //window.console.log('atto editor opened')
                $('.insert-citation').on('click',function(e){
@@ -79,13 +78,14 @@ function addIsotopeGrid(msg) {
                      facets:facets
                 }; 
 
-        window.top.postMessage({event:'eexcess.linkItemClicked', data:documentBadge}, '*'); 
+        window.parent.postMessage({event:'eexcess.linkItemClicked', data:documentBadge}, '*'); 
               
              });
            $('.insert-image').on('click',function(e){
                e.stopPropagation();
                window.parent.postMessage({event: 'eexcess.closeResultsAfterCitation',data:""},'*');
                var item = $(e.target).parent();
+               //console.log(item);
                var facets = {
                     year: item.attr('itemdate'),
                     provider: item.attr('provider')
@@ -99,7 +99,7 @@ function addIsotopeGrid(msg) {
             facets:facets
         };
                
-               window.top.postMessage({event:'eexcess.linkImageClicked', data:documentBadge}, '*');
+               window.parent.postMessage({event:'eexcess.linkImageClicked', data:documentBadge}, '*');
            })    
            }else{
                //window.console.log('atto editor no opened');
