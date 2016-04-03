@@ -1,5 +1,5 @@
     var attoEditor = false;
-    window.top.postMessage({event:'facetScapeOpened',data:""},'*');
+    window.parent.postMessage({event:'facetScapeOpened',data:""},'*');
     window.addEventListener('message',function(e){
                if(e.data.event === 'attoEditorOpened'){
                    //window.console.log('fs - attoEditorOpened');
@@ -870,7 +870,7 @@ function facetScape(domElem, iwidth, iheight, ifacets, queryResultItems, term, q
                             facets:facets
                         }; 
                 
-                        window.top.postMessage({event:'eexcess.linkItemClicked', data:documentBadge}, '*');
+                        window.parent.postMessage({event:'eexcess.linkItemClicked', data:documentBadge}, '*');
                     });
                     
                     
@@ -882,7 +882,8 @@ function facetScape(domElem, iwidth, iheight, ifacets, queryResultItems, term, q
                         var item = $(e.target).parent()[0].__data__;
                         var facets = {
                             date: item.date,
-                            provider: item.documentBadge.provider
+                            provider: item.documentBadge.provider,
+                            license: item.licence
                         }
                         var documentBadge = {
                             id: item.documentBadge.id,
@@ -891,7 +892,7 @@ function facetScape(domElem, iwidth, iheight, ifacets, queryResultItems, term, q
                             previewImage: item.previewImage,
                             facets:facets
                         };
-                         window.top.postMessage({event:'eexcess.linkImageClicked', data:documentBadge}, '*');
+                         window.parent.postMessage({event:'eexcess.linkImageClicked', data:documentBadge}, '*');
                     });
                         $(e.target).parent().append(insImageDiv);
                         

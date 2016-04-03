@@ -86,6 +86,7 @@ var FSCONNECTOR = (function() {
                     self.data.facets = data.facets;
                     self.data.items = data.items;
                     self.rebuild();
+                    //console.log('im here');
                 } else if (event.data.event === 'eexcess.queryTriggered') {
                     _loading();
                 } else if (event.data.event === 'eexcess.error') {
